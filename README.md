@@ -1,7 +1,26 @@
 # credit-risk-classification
 Training and evaluating a Logistic Regression model based on loan risk.
 
+## Table of Contents
 
+- [Repository Folders and Contents](#Repository-Folders-and-Contents)
+- [Tools/Libraries Imported](#Tools/Libraries-Imported)
+- [Credit Risk Analysis Report](#Credit-Risk-Analysis-Report)
+  
+## Repository Folders and Contents
+- Credit_Risk/Resources/
+  - lending_data.csv  --> data csv file
+  
+- Credit_Risk
+  - credit_risk_classification.ipynb  --> Jupyter notebook code
+
+## Tools/Libraries Imported
+- pandas
+- numpy
+- pathlib
+- confusion_matrix, classification_report from sklearn.metrics
+- train_test_split from sklearn.model_selection
+- LogisticRegression from sklearn.linear_model
 
 ## Credit Risk Analysis Report 
 ## Overview of the Analysis
