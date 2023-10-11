@@ -4,7 +4,7 @@ Training and evaluating a Logistic Regression model based on loan risk.
 ## Table of Contents
 
 - [Repository Folders and Contents](#Repository-Folders-and-Contents)
-- [Tools/Libraries Imported](#Tools/Libraries-Imported)
+- [Libraries Imported](#Libraries-Imported)
 - [Credit Risk Analysis Report](#Credit-Risk-Analysis-Report)
   
 ## Repository Folders and Contents
@@ -14,7 +14,7 @@ Training and evaluating a Logistic Regression model based on loan risk.
 - Credit_Risk
   - credit_risk_classification.ipynb  --> Jupyter notebook code
 
-## Tools/Libraries Imported
+## Libraries Imported
 - pandas
 - numpy
 - pathlib
@@ -40,10 +40,6 @@ Using bulleted lists, describe the balanced accuracy scores and the precision an
 * Machine Learning Model 1:
   * Description of Model 1 Accuracy, Precision, and Recall scores.
 
-
-
-* Machine Learning Model 2:
-  * Description of Model 2 Accuracy, Precision, and Recall scores.
 
 ## Summary
 
