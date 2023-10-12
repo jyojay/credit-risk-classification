@@ -25,27 +25,55 @@ Training and evaluating a Logistic Regression model based on loan risk.
 ## Credit Risk Analysis Report 
 ## Overview of the Analysis
 
-In this section, describe the analysis you completed for the machine learning models used in this Challenge. This might include:
+In this Challenge we have used `LogisticRegression` to train and evaluate a model based on loan risk. A dataset of historical lending activity from a peer-to-peer lending services company is used to build a model that can identify the creditworthiness of borrowers. </br>
+The dataset consists of `loan_size`,	`interest_rate`,	`borrower_income`,	`debt_to_income`,	`num_of_accounts`,	`derogatory_marks`,	 `total_debt` and `loan_status` columns. A value of 0 in the `loan_status` column meant that the loan was healthy and a value of 1 meant that the loan had a high risk of defaulting. Based on this, `loan_status` column was used as label or feature to be predicted, and all the remaining columns from the dataset as known features. </br>
 
-* Explain the purpose of the analysis.
-* Explain what financial information the data was on, and what you needed to predict.
-* Provide basic information about the variables you were trying to predict (e.g., `value_counts`).
-* Describe the stages of the machine learning process you went through as part of this analysis.
-* Briefly touch on any methods you used (e.g., `LogisticRegression`, or any resampling method).
+### Splitting the data into training and testing datasets by using train_test_split
+Once the two dataframes for labels and features was created, `train_test_split` from `sklearn.model_selection` was used to split the data into training and testing datasets `X_train, X_test, y_train, y_test`
+### Fitting a logistic regression model by using the training data
+`LogisticRegression` from `sklearn.linear_model` was used to instantiate LogisticRegression Model and fit the training dataset `(X_train, y_train)`. Solver used was `lbfgs`, tried max_iter = 200 and got the same result as default iteration hence decided to allow code to use default iterations. Also random_state of 1 was used in this step.
+### Saving the predictions on the testing data labels by using the testing feature data (X_test) and the fitted model
+Predictions of testing data labels were then made using testing feature data `X_test` using the fitted model and results compared against actuals: </br> </br>
+![image](https://github.com/jyojay/credit-risk-classification/assets/132628129/8d314354-f07c-4c71-9ea4-bed79db3f40b)
 
-## Results
+### Evaluating the model’s performance by doing the following:
+1) Generating a confusion matrix.
+2) Printing the classification report.
 
-Using bulleted lists, describe the balanced accuracy scores and the precision and recall scores of all machine learning models.
+### Results
 
-* Machine Learning Model 1:
-  * Description of Model 1 Accuracy, Precision, and Recall scores.
+**Confusion matrix** </br> </br>
+![image](https://github.com/jyojay/credit-risk-classification/assets/132628129/cdc16751-1d77-42f9-acd7-3605cc444dfc)
 
+* Accuracy:  **0.99**
+  
+* Healthy loan (`loan_status` = 0)
+  
+    * precision: **1.0**
+      
+    * recall: **1.0**
+      
+    * f1-score: **1.0**
+      
+    * support: **18759**
+      
+* High-risk loan (`loan_status` = 1)
+  
+    * precision: **0.87**
+      
+    * recall: **0.89**
+      
+    * f1-score: **0.88**
+      
+    * support: **625**
+ 
+This is summarised in the below **Classification Report** that was generated </br></br>
+![image](https://github.com/jyojay/credit-risk-classification/assets/132628129/e0629ba5-ba31-4e2b-a98d-3ed9851a34d9)
 
-## Summary
+### Analysis and Summary
 
-Summarise the results of the machine learning models, and include a recommendation on the model to use, if any. For example:
-* Which one seems to perform best? How do you know it performs best?
-* Does performance depend on the problem we are trying to solve? (For example, is it more important to predict the `1`'s, or predict the `0`'s? )
-
-If you do not recommend any of the models, please justify your reasoning.
-
+* We have more data with **'0'** (healthy loan) loan-status than  **'1'** (high-risk loan), **18759** and **625** respectively in the dataset hence the accuracy level of **0.99** **is not indicative of the effectiveness of the model**.
+* When we then look at the **precision**, **recall** and **f1-scores**, the model seems to work perfectly well for **'0'** (healthy loans) as all indicators are **1** or almost **100%** correct.
+* However, when we look at the **precision** for **'1'** (high-risk loans), a low score of **0.87** shows that **13%** **of the loans that were wrongly predicted as high-risk were actually good loans which might lead to unhappy customers if any action is taken against them or even customer churn.**
+* Further when we look at the **recall** which is **0.89 meaning 11% of the loans were wrongly predicted as healthy loans although they were actually high-risk.**
+* Hence we can say that this **logistic regression model is not great at predicting high-risk loans**. **With the understanding that identifying high-risk loans is high priority for the financial organizations, this would not be the recommended model. I would recommend trying other methods or combination of methods to handle imbalanced data and compare which model performs better for high-risk loan identification in this case.**
